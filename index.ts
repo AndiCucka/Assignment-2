@@ -1,6 +1,5 @@
 /*
- * Given a string, returns the length 
- * of the largest run in the string.
+ * alphabetize whole numbers
  *
  * @author  Andi Cucka
  * @version 1.0
