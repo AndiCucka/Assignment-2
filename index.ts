@@ -19,8 +19,8 @@ function alphabetizeWholeNumbers(num: number): string[] {
     // Create an array to store whole numbers
     const wholeNumbers: string[] = [];
     // Generate whole numbers from 1 to num and add them to the array
-    for (let i = 1; i <= num; i++) {
-        wholeNumbers.push(i.toString());
+    for (let counter = 1; counter <= num; counter++) {
+        wholeNumbers.push(counter.toString());
     }
 
     // Sort the array alphabetically
