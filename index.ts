@@ -7,23 +7,32 @@
  */
 
 import { createPrompt } from 'bun-promptx'
-import { Translate } from '@google-cloud/translate';
 
-const translate = new Translate({ key: 'YOUR_API_KEY' });
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-async function translateText(text: string, targetLanguage: string): Promise<string> {
-  try {
-    const [translation] = await translate.translate(text, targetLanguage);
-    return translation;
-  } catch (error) {
-    console.error('Translation error:', error);
-    return '';
-  }
+function reverseString(str: string): string {
+    return str.split('').reverse().join('');
 }
 
-// Example usage:
-const inputText = 'Hello, how are you?';
-const targetLanguage = 'fr'; // Target language code (e.g., 'fr' for French)
-translateText(inputText, targetLanguage)
-  .then(translatedText => console.log('Translated text:', translatedText))
-  .catch(error => console.error('Error:', error));
+function writeUpDown(str: string): string {
+    return str.split('').join('\n');
+}
+
+rl.question("Enter a word: ", (word) => {
+    rl.question("Choose an option:\n1. Reverse the word\n2. Write the word from top to bottom\n", (option) => {
+        switch (option) {
+            case "1":
+                console.log("Reversed word:", reverseString(word));
+                break;
+            case "2":
+                console.log("Word written from top to bottom:\n", writeUpDown(word));
+                break;
+            default:
+                console.log("Invalid option!");
+        }
+        rl.close();
+    });
+});
