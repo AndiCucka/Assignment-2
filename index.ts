@@ -20,13 +20,17 @@ function writeUpDown(str: string): string {
 
 async function main() {
     const word = await prompt('Enter a word: ');
-    const option = await prompt('Choose an option:\n1. Reverse the word\n2. Write the word from top to bottom\n');
-    
+
+    const option = await prompt({
+        message: 'Choose an option:',
+        choices: ['Reverse the word', 'Write the word from top to bottom']
+    });
+
     switch (option) {
-        case "1":
+        case 'Reverse the word':
             console.log("Reversed word:", reverseString(word));
             break;
-        case "2":
+        case 'Write the word from top to bottom':
             console.log("Word written from top to bottom:\n", writeUpDown(word));
             break;
         default:
