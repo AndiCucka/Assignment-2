@@ -1,5 +1,5 @@
 /*
- * alphabetize whole numbers
+ * reverse words
  *
  * @author  Andi Cucka
  * @version 1.0
@@ -12,17 +12,20 @@ function reversedString(string) {
   /*
    * This function just reverses a word
    */
-  let reversedString = ""
+  let reversedString = "";
   // reverse string
   for (let counter = string.length - 1; counter >= 0; counter--) {
-    reversedString += string[counter]
+    reversedString += string[counter];
   }
-  
-const userString = createPrompt("Enter a string: ")
-const string = userString.value
+  return reversedString;
+}
+
+const userString = createPrompt("Enter a string: ");
+const inputString = userString.value;
 // error check
-if (string.length === 0) {
-  console.log("Invalid input.")
+if (inputString.length === 0) {
+  console.log("Invalid input.");
 } else {
-  default
+  const reversed = reversedString(inputString);
+  console.log("Reversed string:", reversed);
 }
