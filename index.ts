@@ -12,12 +12,14 @@ function reverseString(str: string): string {
   return str.split('').reverse().join('');
 }
 
-async function main() {
-  const prompt = createPrompt();
-  const userInput = await prompt('Enter a word to reverse: ');
-  const reversedWord = reverseString(userInput);
-  console.log(`Reversed word: ${reversedWord}`);
-  prompt.close();
+function main() {
+  const userString = createPrompt("Enter a string: ");
+  userString.then((input: string) => {
+    const reversedWord = reverseString(input);
+    console.log(`Reversed word: ${reversedWord}`);
+  }).catch((err: any) => {
+    console.error("Error:", err);
+  });
 }
 
-main().catch(console.error);
+main();
