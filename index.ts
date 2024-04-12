@@ -8,18 +8,13 @@
 
 import { createPrompt } from 'bun-promptx';
 
-function reverseString(str: string): string {
-  return str.split('').reverse().join('');
-}
-
-function main() {
-  const userString = createPrompt("Enter a string: ");
-  userString.then((input: string) => {
-    const reversedWord = reverseString(input);
+function reverseWordPrompt(): void {
+  createPrompt("Enter a word: ").then((word: string) => {
+    const reversedWord = word.split('').reverse().join('');
     console.log(`Reversed word: ${reversedWord}`);
-  }).catch((err: any) => {
-    console.error("Error:", err);
+  }).catch((error: any) => {
+    console.error("Error:", error);
   });
 }
 
-main();
+reverseWordPrompt();
