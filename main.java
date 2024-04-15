@@ -28,6 +28,12 @@ public class ReverseWords {
             String reversed = reverseString(inputString);
             // Display the reversed string
             System.out.println("Reversed string: " + reversed);
+            // Display the normal top-down string
+            System.out.println("Top-down string:");
+            printTopDown(inputString);
+            // Display the reversed top-down string
+            System.out.println("Reversed top-down string:");
+            printTopDown(reversed);
         }
 
         // Close the Scanner object to release system resources
@@ -40,12 +46,21 @@ public class ReverseWords {
         StringBuilder reversedString = new StringBuilder();
         
         // Iterate over the characters of the input string in reverse order
-        for (int counter = string.length() - 1; counter >= 0; counter--) {
+        for (int indexcounter = string.length() - 1; indexcounter >= 0; indexcounter--) {
             // Append each character to the StringBuilder in reverse order
-            reversedString.append(string.charAt(counter));
+            reversedString.append(string.charAt(indexcounter));
         }
         
         // Return the reversed string as a String
         return reversedString.toString();
+    }
+
+    // Method to print the top-down representation of a string
+    public static void printTopDown(String string) {
+        // Iterate over the characters of the input string
+        for (int indexcounter = 0; indexcounter < string.length(); indexcounter++) {
+            // Print each character followed by a new line
+            System.out.println(string.charAt(indexcounter));
+        }
     }
 }
