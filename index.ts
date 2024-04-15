@@ -8,16 +8,26 @@
 
 import { createPrompt } from 'bun-promptx';
 
-function reversedString(string) {
+interface ReversedStrings {
+  reversed: string;
+  topDown: string;
+}
+
+function reversedString(string: string): ReversedStrings {
   /*
    * This function just reverses a word
    */
   let reversedString = "";
+  let topDownString = "";
   // reverse string
   for (let counter = string.length - 1; counter >= 0; counter--) {
     reversedString += string[counter];
+    topDownString += string[counter] + '\n';
   }
-  return reversedString;
+  return {
+    reversed: reversedString,
+    topDown: topDownString
+  };
 }
 
 const userString = createPrompt("Enter a string: ");
@@ -26,6 +36,7 @@ const inputString = userString.value;
 if (inputString.length === 0) {
   console.log("Invalid input.");
 } else {
-  const reversed = reversedString(inputString);
+  const { reversed, topDown } = reversedString(inputString);
   console.log("Reversed string:", reversed);
+  console.log("Top-down string:", topDown);
 }
